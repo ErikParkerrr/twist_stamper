@@ -28,11 +28,11 @@ class TwistStamper(Node):
         self.declare_parameter("frame_id", "")
         self.frame_id = str(self.get_parameter("frame_id").value)
 
-        self.publisher_ = self.create_publisher(TwistStamped, 'cmd_vel_out', 10)
+        self.publisher_ = self.create_publisher(TwistStamped, '/rover/cmd_vel', 10)
 
         self.subscription = self.create_subscription(
             Twist,
-            'cmd_vel_in',
+            'cmd_vel',
             self.listener_callback,
             10)
         self.subscription  # prevent unused variable warning
